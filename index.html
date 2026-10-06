@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Campus Placement Management System created by Ashish Yadav">
+<title>Campus Placement Portal | Ashish Yadav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-icon">CP</div><div><strong>Campus<span>Portal</span></strong><small>Placement Management</small></div></div>
+  <div class="role-switch"><button class="role active" data-role="student">🎓 Student</button><button class="role" data-role="recruiter">🏢 Recruiter</button></div>
+  <nav id="studentNav">
+    <a class="nav active" data-page="dashboard">▦ <span>Dashboard</span></a>
+    <a class="nav" data-page="jobs">💼 <span>Job Listings</span></a>
+    <a class="nav" data-page="applications">📋 <span>My Applications</span></a>
+    <a class="nav" data-page="profile">👤 <span>My Profile</span></a>
+  </nav>
+  <nav id="recruiterNav" class="hidden">
+    <a class="nav" data-page="recruiterDashboard">▦ <span>Dashboard</span></a>
+    <a class="nav" data-page="recruiterJobs">💼 <span>My Jobs</span></a>
+    <a class="nav" data-page="allApplications">📋 <span>Applications</span></a>
+  </nav>
+  <div class="sidebar-bottom"><div class="author">Created by <strong>Ashish Yadav</strong></div><button id="logout">↪ Logout</button></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <button class="mobile-menu" id="mobileMenu">☰</button>
+  <div><span class="top-label">CAMPUS PLACEMENT PORTAL</span><h1 id="pageTitle">Student Dashboard</h1></div>
+  <div class="top-user"><div class="avatar" id="avatar">AM</div><div><strong id="userName">Aarav Mehta</strong><small id="userRole">Student</small></div></div>
+</header>
+
+<div class="content">
+<section id="dashboard" class="page active-page">
+  <div class="welcome"><div><span class="eyebrow">WELCOME BACK 👋</span><h2>Ready for your next opportunity?</h2><p>Track eligible jobs, applications and placement progress from one dashboard.</p></div><button class="btn primary" onclick="showPage('jobs')">Explore Jobs →</button></div>
+  <div class="stats">
+    <div class="stat"><span class="stat-icon blue">💼</span><div><small>Eligible Jobs</small><strong id="eligibleCount">0</strong><em>Matches your profile</em></div></div>
+    <div class="stat"><span class="stat-icon purple">📨</span><div><small>Applications</small><strong id="applicationCount">0</strong><em>Total submitted</em></div></div>
+    <div class="stat"><span class="stat-icon green">⭐</span><div><small>Shortlisted</small><strong id="shortlistedCount">0</strong><em>Current status</em></div></div>
+    <div class="stat"><span class="stat-icon orange">🎯</span><div><small>Profile Score</small><strong>86%</strong><em>Good standing</em></div></div>
+  </div>
+  <div class="two-col">
+    <div class="card"><div class="card-head"><div><span class="eyebrow">RECOMMENDED</span><h3>Jobs matching your profile</h3></div><button class="text-btn" onclick="showPage('jobs')">View all</button></div><div id="recommendedJobs"></div></div>
+    <div class="card"><div class="card-head"><div><span class="eyebrow">RECENT ACTIVITY</span><h3>Application timeline</h3></div></div><div id="timeline"></div></div>
+  </div>
+</section>
+
+<section id="jobs" class="page">
+  <div class="page-intro"><div><span class="eyebrow">OPPORTUNITIES</span><h2>Find your next job</h2><p>Browse jobs and check eligibility before applying.</p></div><div class="search"><span>⌕</span><input id="jobSearch" placeholder="Search company, role or skill..."></div></div>
+  <div class="filters" id="jobFilters"><button class="filter active" data-type="All">All</button><button class="filter" data-type="Full-time">Full-time</button><button class="filter" data-type="Internship">Internship</button><button class="filter" data-type="Remote">Remote</button></div>
+  <div class="jobs-grid" id="jobsGrid"></div>
+</section>
+
+<section id="applications" class="page">
+  <div class="page-intro"><div><span class="eyebrow">TRACKING</span><h2>My Applications</h2><p>Keep track of every application and its current status.</p></div></div>
+  <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Company</th><th>Role</th><th>Type</th><th>Applied</th><th>Status</th></tr></thead><tbody id="applicationsTable"></tbody></table></div></div>
+</section>
+
+<section id="profile" class="page">
+  <div class="page-intro"><div><span class="eyebrow">YOUR INFORMATION</span><h2>Student Profile</h2><p>Your profile is used for eligibility matching.</p></div></div>
+  <div class="profile-grid"><div class="card profile-card"><div class="big-avatar">AM</div><h3>Aarav Mehta</h3><p>Computer Science • Class of 2026</p><div class="profile-list"><div><span>Email</span><strong>student@campus.edu</strong></div><div><span>CGPA</span><strong>8.6 / 10</strong></div><div><span>Backlogs</span><strong>0</strong></div><div><span>Projects</span><strong>3</strong></div></div></div><div class="card"><span class="eyebrow">SKILLS</span><h3>Technical Skills</h3><div class="chips"><span>Python</span><span>Java</span><span>DSA</span><span>SQL</span><span>React</span></div><div class="tip">💡 <strong>Tip:</strong> Add more relevant skills to improve the number of jobs you match.</div></div></div>
+</section>
+
+<section id="recruiterDashboard" class="page">
+  <div class="welcome recruiter-welcome"><div><span class="eyebrow">RECRUITER PORTAL</span><h2>Manage your campus hiring</h2><p>Post opportunities and review student applications.</p></div><button class="btn primary" onclick="openJobModal()">+ Post New Job</button></div>
+  <div class="stats"><div class="stat"><span class="stat-icon blue">💼</span><div><small>Active Jobs</small><strong id="rJobCount">0</strong><em>Currently posted</em></div></div><div class="stat"><span class="stat-icon purple">📨</span><div><small>Applications</small><strong id="rAppCount">0</strong><em>Received</em></div></div><div class="stat"><span class="stat-icon green">⭐</span><div><small>Shortlisted</small><strong id="rShortCount">0</strong><em>Students</em></div></div><div class="stat"><span class="stat-icon orange">🏢</span><div><small>Company</small><strong>Northstar</strong><em>Labs</em></div></div></div>
+  <div class="card"><div class="card-head"><div><span class="eyebrow">RECENT</span><h3>Latest applications</h3></div><button class="text-btn" onclick="showPage('allApplications')">View all</button></div><div id="recentRecruiterApps"></div></div>
+</section>
+
+<section id="recruiterJobs" class="page"><div class="page-intro"><div><span class="eyebrow">RECRUITER</span><h2>My Job Postings</h2><p>Manage positions posted by your company.</p></div><button class="btn primary" onclick="openJobModal()">+ Post New Job</button></div><div class="jobs-grid" id="recruiterJobsGrid"></div></section>
+
+<section id="allApplications" class="page"><div class="page-intro"><div><span class="eyebrow">RECRUITER</span><h2>Applications</h2><p>Review applicants and update their application status.</p></div></div><div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Student</th><th>Company</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody id="allAppsTable"></tbody></table></div></div></section>
+</div>
+</main>
+</div>
+
+<div class="modal hidden" id="jobModal"><div class="modal-box"><button class="close" onclick="closeJobModal()">✕</button><span class="eyebrow">NEW OPPORTUNITY</span><h2>Post a Job</h2><form id="jobForm"><input required id="company" placeholder="Company name"><input required id="role" placeholder="Job role"><div class="form-row"><select id="type"><option>Full-time</option><option>Internship</option></select><input required id="location" placeholder="Location"></div><input required id="package" placeholder="Package e.g. 12-18 LPA"><div class="form-row"><input required type="number" step=".1" min="0" max="10" id="minCgpa" placeholder="Minimum CGPA"><input required type="number" min="0" id="maxBacklogs" placeholder="Max backlogs"></div><input required id="skills" placeholder="Required skills (comma separated)"><input required type="date" id="deadline"><button class="btn primary full" type="submit">Publish Job</button></form></div></div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

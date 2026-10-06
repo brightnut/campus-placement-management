@@ -1,4 +1,4 @@
-# Campus Placement Management System — Web Frontend
+# Campus Placement Management System 
 
 A browser-based frontend for the Campus Placement Management System, created from the original C++17 project.
 
@@ -29,4 +29,5 @@ The Netlify version provides a visual frontend for these same workflows:
 ## Important
 This is a frontend/demo version. Data is held in browser memory and is not a production backend. The original C++ program stores its records in memory and resets when it exits.
 
+Web App: https://golden-toffee-ea3b73.netlify.app
 
